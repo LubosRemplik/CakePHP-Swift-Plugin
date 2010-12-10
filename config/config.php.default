@@ -1,0 +1,23 @@
+<?php
+############################################################################
+# Mailer
+############################################################################
+// SMTP
+//$config['ServerMailer']['backend'] = 'smtp';
+//$config['ServerMailer']['options']['host'] = "smtp.somehost.com";
+//$config['ServerMailer']['options']['port'] = 25;
+//$config['ServerMailer']['options']['encryption'] = "";
+//$config['ServerMailer']['options']['username'] = "";
+//$config['ServerMailer']['options']['password'] = "";
+
+// NATIVE MAIL
+$config['ServerMailer']['backend'] = 'mail';
+
+// SENDMAIL
+//$config['ServerMailer']['backend'] = 'sendmail';
+// Optional
+// 1.  "-bs" runs in SMTP mode so theoretically it will act like the SMTP Transport
+// 2. "-t" runs in piped mode with no feedback, but theoretically faster, though not advised
+//$config['ServerMailer']['path'] = '/usr/sbin/sendmail -bs';
+//$config['ServerMailer']['path'] = '/usr/sbin/sendmail -t';
+//$config['ServerMailer']['path'] = '/usr/sbin/exim -bs';

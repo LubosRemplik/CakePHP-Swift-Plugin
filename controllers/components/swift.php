@@ -104,8 +104,11 @@ class SwiftComponent extends Object {
 		switch($config['backend']) {
             case "smtp":
                 $host = !empty($config['options']['host']) ? $config['options']['host'] : 'localhost';
-                $port = !empty($config['options']['port']) ? $config['options']['port'] : 25;
-                $transport = Swift_SmtpTransport::newInstance($host, $port);
+                $transport = Swift_SmtpTransport::newInstance($host);
+                if(!empty($config['options']['port'])) 
+                    $transport->setPort($config['options']['port']);
+                if(!empty($config['options']['encryption'])) 
+                    $transport->setEncryption($config['options']['encryption']);
                 if(!empty($config['options']['username'])) 
                     $transport->setUsername($config['options']['username']);
                 if(!empty($config['options']['password'])) 
