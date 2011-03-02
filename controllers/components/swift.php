@@ -143,8 +143,11 @@ class SwiftComponent extends Object {
             foreach($recipients as $value) {
                 $recipient = explode(' ', trim($value));
                 $email = trim(array_pop($recipient), '<>');
-                $name = implode(' ', $recipient);
-                $return[$email] = $name;
+                if(strstr($email, '@')) {
+                	$name = implode(' ', $recipient);
+                	if(empty($name)) $return[$email] = $email;
+                	else $return[$email] = $name;
+                }
             }      
             return $return;
     	}
