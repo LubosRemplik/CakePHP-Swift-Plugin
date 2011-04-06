@@ -51,7 +51,16 @@ class SwiftComponent extends Object {
             $message->setBody($textBody);
         }
         // HTML message
-        if(!empty($htmlBody)) $message->addPart($htmlBody, "text/html");
+        if(!empty($htmlBody)) $message->addPart($htmlBody, "text/html");        
+        // Attachments
+        if(!empty($attachments)) {
+        	if(!is_array($attachments)) {
+        		$attachments = array($attachments);
+        	} 
+        	foreach($attachments as $attachment) {
+	        	$message->attach(Swift_Attachment::fromPath($attachment));        		
+        	}    	
+        }
         // Sending message
         return $mailer->batchSend($message, $this->failures);
     }
