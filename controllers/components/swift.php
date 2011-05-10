@@ -104,7 +104,7 @@ class SwiftComponent extends Object {
      * Set mailer backend
      * @return object SwiftMailer
      */
-    private function getMailer() {
+    public function getMailer() {
         // Load Swift mailer library
         $config = !Configure::read('ServerMailer.backend') ? 
 			array('backend' => 'mail') 
