@@ -1,0 +1,23 @@
+h1. CakePHP Swift Plugin
+
+A CakePHP Plugin used for sending emails
+Uses Swift mailer library http://swiftmailer.org/ 
+
+h2. Configuration
+
+Configure and use config/config.php.default 
+
+h2. Usage
+
+bc. 
+var $uses = array('Swift.Swift');
+...
+// prepare text body
+$textBody = $this->Swift->render('/elements/email/text/contact.ctp', compact('data'));
+// send email
+$result = $this->Swift->send(array(
+    'subject' => 'Subject',
+    'from' => 'from@example.com',
+    'to' => 'to@example.com',
+    'textBody' => $textBody
+));
