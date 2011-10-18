@@ -35,7 +35,7 @@ class Yay_SimpleState extends Yay_SimpleStatePredicate implements Yay_State
    */
   public function __construct(Yay_States $stateMachine, $stateName)
   {
-    parent::__construct($stateMachine, $stateName, true);
+    parent::__construct($stateMachine, $stateName);
   }
   
   /**
