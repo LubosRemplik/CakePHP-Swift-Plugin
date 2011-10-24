@@ -1,25 +1,36 @@
 <?php
-
 App::import('Vendor', 'Swift', array(
 	'file' => 'swift' . DS . 'lib' . DS . 'swift_required.php', 
 	'plugin' => 'swift'
 ));
 
 /**
- * Swift mailer component
- * @version 1.0
- * @author Tsuyoshi Saito <tsuyoshi@on-idle.com>
- */
-class SwiftComponent extends Object {
-    var $controller = null;
-    var $failures;
+ * Swift Component 
+ **/
+class SwiftComponent extends Component {
     
-	function initialize(&$controller, $settings = array()) {
-		$this->controller = $controller;
-	}
-	
-    function startup(&$controller) {
-        $this->controller = $controller;
+    public $components = array();
+
+    public $failures;
+
+    function __construct(ComponentCollection $collection, $settings = array()) {
+        $this->controller = $collection->getController();
+        parent::__construct($collection, $settings);
+    }
+
+    public function initialize($controller) {
+    }
+
+    public function startup($controller) {
+    }
+
+    public function beforeRender($controller) {
+    }
+
+    public function shutdown($controller) {
+    }
+
+    public function beforeRedirect($controller, $url, $status=null, $exit=true) {
     }
     
     /**
@@ -142,7 +153,7 @@ class SwiftComponent extends Object {
     
     /**
      * Parse email text in format 
-     * Luboš Remplík <lubos@on-idle.com>, smith@email.com
+     * Lubos Remplik <lubos@on-idle.com>, smith@email.com
      * to array suite for recepients
      */
     public function parseRecepients($data = null) {
@@ -163,5 +174,3 @@ class SwiftComponent extends Object {
     	return false;    	
     }
 }
-
-?>
